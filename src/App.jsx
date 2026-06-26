@@ -13,7 +13,6 @@ import {
   Waves,
   X,
 } from 'lucide-react';
-import heroImage from '../hero-AQ.webp';
 import productImage from '../image.png';
 import logoImage from '../logo-AQ.webp';
 import ironWaterImage from '../iron-water.webp';
@@ -22,6 +21,8 @@ import mustyWaterImage from '../musty-water.webp';
 import muddyWaterImage from '../muddy-water.webp';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const heroImage = new URL(`${import.meta.env.BASE_URL}hero-AQ.webp`, window.location.href).href;
 
 const navItems = [
   { label: 'Услуги', href: '#problems' },
