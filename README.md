@@ -1,4 +1,4 @@
-# АКВАРЕС Homepage Prototype
+# ФИЛЬТР ДАМ Homepage Prototype
 
 React + Vite прототип главной страницы для сайта водоочистки частных домов.
 

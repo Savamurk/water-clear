@@ -14,7 +14,7 @@ import {
   X,
 } from 'lucide-react';
 import productImage from '../image.png';
-import logoImage from '../logo-AQ.webp';
+import logoImage from '../logo-filtrdam.webp';
 import ironWaterImage from '../iron-water.webp';
 import hardWaterImage from '../hard-water.webp';
 import mustyWaterImage from '../musty-water.webp';
@@ -23,6 +23,7 @@ import muddyWaterImage from '../muddy-water.webp';
 gsap.registerPlugin(ScrollTrigger);
 
 const heroImage = new URL(`${import.meta.env.BASE_URL}hero-AQ.webp`, window.location.href).href;
+const brandName = 'ФИЛЬТР ДАМ';
 
 const navItems = [
   { label: 'Услуги', href: '#problems' },
@@ -218,8 +219,8 @@ function Header() {
           ))}
         </nav>
 
-        <a className="brand-wordmark" href="#top" aria-label="АКВАРЕС">
-          АКВАРЕС
+        <a className="brand-wordmark" href="#top" aria-label={brandName}>
+          {brandName}
         </a>
 
         <div className="header-actions">
@@ -244,7 +245,7 @@ function Header() {
       <div className={`mobile-drawer ${isOpen ? 'mobile-drawer--open' : ''}`}>
         <div className="drawer-panel">
           <div className="drawer-top">
-            <span className="brand-wordmark">АКВАРЕС</span>
+            <span className="brand-wordmark">{brandName}</span>
             <button className="icon-button" type="button" aria-label="Закрыть меню" onClick={closeDrawer}>
               <X size={20} />
             </button>
@@ -439,7 +440,7 @@ function Footer() {
         <div className="footer-brand">
           <div className="footer-brandline">
             <img src={logoImage} alt="" />
-            <span className="brand-wordmark">АКВАРЕС</span>
+            <span className="brand-wordmark">{brandName}</span>
           </div>
           <p>Водоочистка для частных домов в Москве и области. Подбор, монтаж и сервис систем под реальную воду.</p>
         </div>

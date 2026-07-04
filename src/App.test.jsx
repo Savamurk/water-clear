@@ -1,16 +1,17 @@
 import { render, screen } from '@testing-library/react';
 import App from './App.jsx';
 
-describe('AKVARES homepage prototype', () => {
+describe('Filtr Dam homepage prototype', () => {
   it('renders the approved hero and navigation without legacy AquaClear copy', () => {
     render(<App />);
 
-    expect(screen.getAllByText('АКВАРЕС').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('ФИЛЬТР ДАМ').length).toBeGreaterThan(0);
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
       'Чистая вода — забота о вашем доме',
     );
     expect(screen.getAllByRole('link', { name: 'Узнать стоимость' }).length).toBeGreaterThan(0);
     expect(screen.queryByText(/AQUACLEAR/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/АКВАРЕС/i)).not.toBeInTheDocument();
   });
 
   it('renders six catalog cards and four problem cards from the plan', () => {
@@ -36,6 +37,6 @@ describe('AKVARES homepage prototype', () => {
     const { container } = render(<App />);
 
     expect(container.querySelector('.footer-brandline img')).toBeInTheDocument();
-    expect(container.querySelector('.site-footer')).toHaveTextContent('АКВАРЕС');
+    expect(container.querySelector('.site-footer')).toHaveTextContent('ФИЛЬТР ДАМ');
   });
 });
