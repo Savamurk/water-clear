@@ -209,33 +209,16 @@ img {
   padding: 0 22px;
   font-size: 15px;
   font-weight: 700;
-  overflow: hidden;
   transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    background 180ms ease,
-    color 180ms ease,
-    box-shadow 180ms ease;
-}
-
-.button::after {
-  content: '';
-  position: absolute;
-  inset: -20% -45%;
-  pointer-events: none;
-  background: rgba(255, 255, 255, 0.28);
-  opacity: 0;
-  transform: translateX(-58%) skewX(-18deg);
-  transition: transform 620ms cubic-bezier(0.22, 1, 0.36, 1), opacity 180ms ease;
+    transform 200ms ease,
+    border-color 200ms ease,
+    background 200ms ease,
+    color 200ms ease,
+    box-shadow 200ms ease;
 }
 
 .button:hover {
-  transform: translateY(-2px);
-}
-
-.button:hover::after {
-  opacity: 1;
-  transform: translateX(58%) skewX(-18deg);
+  transform: translateY(-3px);
 }
 
 .button--primary {
@@ -245,7 +228,8 @@ img {
 }
 
 .button--primary:hover {
-  background: #116ddd;
+  background: #348bf0;
+  box-shadow: 0 22px 38px rgba(29, 121, 233, 0.24);
 }
 
 .button--secondary,
@@ -259,6 +243,8 @@ img {
 .button--ghost:hover {
   border-color: rgba(29, 121, 233, 0.36);
   color: var(--color-accent);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 14px 28px rgba(37, 82, 130, 0.1);
 }
 
 .button--wide {
