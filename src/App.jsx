@@ -219,8 +219,8 @@ function Header() {
           ))}
         </nav>
 
-        <a className="brand-wordmark" href="#top" aria-label={brandName}>
-          {brandName}
+        <a className="brand-logo header-brand-logo" href="#top" aria-label={brandName}>
+          <img src={logoImage} alt="" />
         </a>
 
         <div className="header-actions">
@@ -245,7 +245,9 @@ function Header() {
       <div className={`mobile-drawer ${isOpen ? 'mobile-drawer--open' : ''}`}>
         <div className="drawer-panel">
           <div className="drawer-top">
-            <span className="brand-wordmark">{brandName}</span>
+            <span className="brand-logo drawer-brand-logo" aria-label={brandName}>
+              <img src={logoImage} alt="" />
+            </span>
             <button className="icon-button" type="button" aria-label="Закрыть меню" onClick={closeDrawer}>
               <X size={20} />
             </button>
@@ -439,8 +441,7 @@ function Footer() {
       <div className="footer-inner">
         <div className="footer-brand">
           <div className="footer-brandline">
-            <img src={logoImage} alt="" />
-            <span className="brand-wordmark">{brandName}</span>
+            <img src={logoImage} alt={brandName} />
           </div>
           <p>Водоочистка для частных домов в Москве и области. Подбор, монтаж и сервис систем под реальную воду.</p>
         </div>

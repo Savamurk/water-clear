@@ -3,9 +3,9 @@ import App from './App.jsx';
 
 describe('Filtr Dam homepage prototype', () => {
   it('renders the approved hero and navigation without legacy AquaClear copy', () => {
-    render(<App />);
+    const { container } = render(<App />);
 
-    expect(screen.getAllByText('ФИЛЬТР ДАМ').length).toBeGreaterThan(0);
+    expect(container.querySelector('.header-brand-logo[aria-label="ФИЛЬТР ДАМ"] img')).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
       'Чистая вода — забота о вашем доме',
     );
@@ -33,10 +33,13 @@ describe('Filtr Dam homepage prototype', () => {
     expect(screen.getByLabelText('Телефон')).toBeInTheDocument();
   });
 
-  it('uses the logo and brand name in the footer', () => {
+  it('uses the logo without duplicate brand text in the footer', () => {
     const { container } = render(<App />);
+    const footerBrandline = container.querySelector('.footer-brandline');
 
-    expect(container.querySelector('.footer-brandline img')).toBeInTheDocument();
-    expect(container.querySelector('.site-footer')).toHaveTextContent('ФИЛЬТР ДАМ');
+    expect(footerBrandline).toBeInTheDocument();
+    expect(screen.getByAltText('ФИЛЬТР ДАМ')).toBeInTheDocument();
+    expect(footerBrandline.querySelector('img')).toBeInTheDocument();
+    expect(footerBrandline).not.toHaveTextContent('ФИЛЬТР ДАМ');
   });
 });
