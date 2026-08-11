@@ -16,13 +16,20 @@
     "a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex='-1'])";
 
   const toTop = document.querySelector(".to-top");
+  const footer = document.querySelector(".site-footer");
 
   // Кнопка возврата появляется, когда прокручен примерно экран с половиной:
   // раньше она мешала бы первому экрану, позже – уже не спасала бы.
+  // И прячется, когда подвал доехал до низа окна: круглая кнопка ложилась
+  // прямо на ссылки о персональных данных и перекрывала их.
   const setScrollState = () => {
     header?.classList.toggle("is-scrolled", window.scrollY > 12);
     if (toTop) {
-      const show = window.scrollY > window.innerHeight * 1.5;
+      const scrolled = window.scrollY > window.innerHeight * 1.5;
+      const footerReached = footer
+        ? footer.getBoundingClientRect().top < window.innerHeight - 90
+        : false;
+      const show = scrolled && !footerReached;
       toTop.hidden = !show;
       toTop.classList.toggle("is-visible", show);
     }
@@ -66,14 +73,34 @@
     });
   };
 
+  // На мыши меню раскрывается наведением: это делает CSS, а скрипт лишь
+  // держит aria-expanded в согласии с тем, что видно на экране. Клик остаётся
+  // для клавиатуры и сенсорных экранов, где наведения нет.
+  const hoverCapable = window.matchMedia("(hover: hover) and (pointer: fine)");
+
   document.querySelectorAll(".nav-trigger").forEach((trigger) => {
+    const panel = document.getElementById(trigger.getAttribute("aria-controls"));
+    const item = trigger.closest(".nav-item");
+
     trigger.addEventListener("click", (event) => {
       event.stopPropagation();
-      const panel = document.getElementById(trigger.getAttribute("aria-controls"));
+      // При наведении панель уже открыта, и клик по кнопке закрывал бы её
+      // сразу после показа.
+      if (hoverCapable.matches) return;
       const isOpen = trigger.getAttribute("aria-expanded") === "true";
       closeNavPanels(trigger);
       trigger.setAttribute("aria-expanded", String(!isOpen));
       panel?.classList.toggle("is-open", !isOpen);
+    });
+
+    item?.addEventListener("pointerenter", () => {
+      if (!hoverCapable.matches) return;
+      trigger.setAttribute("aria-expanded", "true");
+    });
+
+    item?.addEventListener("pointerleave", () => {
+      if (!hoverCapable.matches) return;
+      trigger.setAttribute("aria-expanded", "false");
     });
   });
 
@@ -364,6 +391,50 @@
       }
     });
   });
+
+
+  // Витрина каталога: фильтр по бренду и назначению, сортировка по цене.
+  // Без скрипта витрина остаётся полной, поэтому панель фильтров спрятана
+  // атрибутом hidden и включается только отсюда.
+  const filterBar = document.querySelector("[data-filter-bar]");
+  const productGrid = document.querySelector("[data-product-grid]");
+  if (filterBar && productGrid) {
+    filterBar.hidden = false;
+    const tiles = [...productGrid.querySelectorAll(".product-tile")];
+    const emptyNote = document.querySelector("[data-filter-empty]");
+    const catSelect = filterBar.querySelector("[data-filter-cat]");
+    const sortSelect = filterBar.querySelector("[data-filter-sort]");
+    const chips = [...filterBar.querySelectorAll("[data-filter-brand]")];
+    let brand = "";
+
+    const apply = () => {
+      const cat = catSelect ? catSelect.value : "";
+      let shown = 0;
+      tiles.forEach((tile) => {
+        const ok = (!brand || tile.dataset.brand === brand) && (!cat || tile.dataset.cat === cat);
+        tile.classList.toggle("is-hidden", !ok);
+        if (ok) shown += 1;
+      });
+      if (emptyNote) emptyNote.hidden = shown > 0;
+      const sort = sortSelect ? sortSelect.value : "";
+      if (sort) {
+        const dir = sort === "price-desc" ? -1 : 1;
+        [...tiles]
+          .sort((a, b) => dir * (Number(a.dataset.price) - Number(b.dataset.price)))
+          .forEach((tile) => productGrid.appendChild(tile));
+      }
+    };
+
+    chips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        brand = chip.dataset.filterBrand;
+        chips.forEach((c) => c.classList.toggle("is-active", c === chip));
+        apply();
+      });
+    });
+    catSelect?.addEventListener("change", apply);
+    sortSelect?.addEventListener("change", apply);
+  }
 
   // Появление секций при скролле. Стили включаются только при разрешённой
   // анимации, поэтому наблюдателю дополнительные проверки не нужны.
