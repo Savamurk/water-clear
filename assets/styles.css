@@ -154,10 +154,18 @@ a:hover .act::before, .act:hover::before,
   opacity: 0; visibility: hidden; pointer-events: none;
   transition: opacity 200ms var(--ease), transform 200ms var(--ease), visibility 0s linear 200ms;
 }
-.nav-panel.is-open {
+/* Панель раскрывается наведением на пункт; класс is-open остаётся для
+   сенсорных экранов, где наведения нет. */
+.nav-panel.is-open,
+.nav-item:hover .nav-panel,
+.nav-item:focus-within .nav-panel {
   opacity: 1; visibility: visible; pointer-events: auto;
   transform: translateX(-50%) translateY(0);
   transition: opacity 200ms var(--ease), transform 200ms var(--ease);
+}
+/* Мостик под пунктом: курсор доходит до панели, не теряя наведение. */
+.nav-item::after {
+  content: ''; position: absolute; left: 0; right: 0; top: 100%; height: 12px;
 }
 .nav-panel a {
   display: grid; gap: 2px; padding: 10px 12px; border-radius: var(--r);
@@ -294,6 +302,9 @@ a:hover .act::before, .act:hover::before,
 .page-hero-media img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.85); }
 .page-hero-media::after { content: ''; position: absolute; inset: 0; background: rgba(30, 58, 110, 0.10); pointer-events: none; }
 .page-hero-note { align-self: center; }
+/* Голый первый экран: крошки, заголовок и сразу дело */
+.page-hero--bare { padding: 18px 0 0; }
+.page-hero--bare h1 { max-width: 30ch; }
 .page-hero--plain h1 { max-width: 34ch; }
 .page-hero--plain .page-hero-copy > p { max-width: 66ch; }
 
@@ -323,7 +334,11 @@ main > .section:first-child, main > .section--tight:first-child { margin-top: ca
   margin-bottom: 34px;
 }
 .section-heading p { color: var(--ink-2); font-size: 16px; max-width: 52ch; text-align: right; }
+/* На главной заголовки идут без линейки: страница работает витриной,
+   и лишние разделители дробят её на куски. */
+.is-home .section-heading { border-bottom: 0; padding-bottom: 0; margin-bottom: 26px; }
 .section-heading--inner { border-bottom-color: var(--line); margin-top: 44px; }
+.is-home .section-heading--inner { margin-top: 52px; }
 .section-heading--inner h3 { font-size: clamp(1.25rem, 2vw, 1.6rem); letter-spacing: -0.01em; }
 .section--dark .section-heading { border-bottom-color: rgba(233, 235, 238, 0.28); }
 .section--dark .section-heading p { color: var(--on-ink-2); }
@@ -705,6 +720,15 @@ tbody tr:last-child td { border-bottom: 1px solid var(--line); }
 .lead-aside > p { color: var(--ink-2); font-size: 14.5px; }
 .lead-form--compact { padding: 24px; gap: 14px; }
 
+/* Форма во всю ширину: поля в строку, согласие под ними */
+.lead-form--row {
+  display: grid; grid-template-columns: 1fr 1.4fr 1fr auto; gap: 18px 20px;
+  align-items: end;
+}
+.lead-form--row .button { padding: 12px 26px; }
+.lead-wide-consent { grid-column: 1 / -1; }
+.lead-form--row .form-status { grid-column: 1 / -1; }
+
 /* ===== Модальное окно ===== */
 .modal { position: fixed; inset: 0; z-index: 70; display: grid; place-items: center; padding: 20px; }
 .modal-backdrop {
@@ -844,6 +868,8 @@ tbody tr:last-child td { border-bottom: 1px solid var(--line); }
   .cost-part { border-left: 0; padding-left: 0; }
   .scheme-list { grid-template-columns: 1fr; }
   .check-list--wide { columns: 1; }
+  .lead-form--row { grid-template-columns: 1fr; }
+  .lead-form--row .button { width: 100%; }
 
   .protocol-row { grid-template-columns: 1fr auto; }
   .protocol-row i { grid-column: 1 / -1; }

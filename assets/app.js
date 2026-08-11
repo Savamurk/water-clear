@@ -84,10 +84,13 @@
 
     trigger.addEventListener("click", (event) => {
       event.stopPropagation();
-      // При наведении панель уже открыта, и клик по кнопке закрывал бы её
-      // сразу после показа.
+      // С мышью раздел открывается по клику как обычная ссылка, а панель
+      // уже раскрыта наведением.
       if (hoverCapable.matches) return;
+      // На сенсорном экране первое касание раскрывает панель, второе уводит
+      // в раздел, поэтому переход отменяется только на первом.
       const isOpen = trigger.getAttribute("aria-expanded") === "true";
+      if (!isOpen) event.preventDefault();
       closeNavPanels(trigger);
       trigger.setAttribute("aria-expanded", String(!isOpen));
       panel?.classList.toggle("is-open", !isOpen);
