@@ -203,49 +203,56 @@ a:hover .act::before, .act:hover::before,
   position: absolute; inset: 0; background: rgba(16, 20, 26, 0.44);
   opacity: 0; transition: opacity 240ms var(--ease);
 }
+/* Шторка держится в высоту экрана: прокручивается только список разделов,
+   и то лишь на совсем низких экранах. */
 .drawer-panel {
   position: absolute; top: 0; right: 0; bottom: 0;
-  width: min(360px, 92vw);
+  width: min(360px, 92vw); max-height: 100%;
   background: var(--paper); border-left: 1px solid var(--line);
   display: flex; flex-direction: column;
   transform: translateX(24px); opacity: 0;
   transition: transform 260ms var(--ease), opacity 260ms var(--ease);
-  overflow-y: auto;
+  overflow: hidden;
 }
 .mobile-drawer.is-open .drawer-backdrop { opacity: 1; }
 .mobile-drawer.is-open .drawer-panel { transform: none; opacity: 1; }
 .drawer-top {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 20px; border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: flex-end;
+  padding: 12px 16px 12px 20px; flex: none;
 }
+/* Крестик рисуется двумя линиями: текстовый знак «×» в этой гарнитуре
+   сидит криво и выглядит случайным. */
 .drawer-close {
-  width: 44px; height: 44px; font-size: 26px; line-height: 1;
-  border: 1px solid var(--line); border-radius: var(--r); color: var(--ink-2);
-  transition: border-color var(--fast) var(--ease), color var(--fast) var(--ease);
+  position: relative; width: 44px; height: 44px; flex: none;
+  border: 1px solid var(--line); border-radius: var(--r);
+  transition: border-color var(--fast) var(--ease), background var(--fast) var(--ease);
 }
-.drawer-close:hover { border-color: var(--ink); color: var(--ink); }
-.drawer-nav { padding: 10px 20px 20px; display: grid; }
-.drawer-nav > a, .drawer-nav summary {
-  padding: 13px 0; font-weight: 500; font-size: 16.5px;
-  border-bottom: 1px solid var(--line); cursor: pointer; list-style: none;
+.drawer-close::before, .drawer-close::after {
+  content: ''; position: absolute; left: 50%; top: 50%;
+  width: 17px; height: 1.5px; background: var(--ink);
+  transition: background var(--fast) var(--ease);
 }
-.drawer-nav summary::-webkit-details-marker { display: none; }
-.drawer-nav summary {
-  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+.drawer-close::before { transform: translate(-50%, -50%) rotate(45deg); }
+.drawer-close::after { transform: translate(-50%, -50%) rotate(-45deg); }
+.drawer-close:hover { border-color: var(--ink); background: var(--tile); }
+
+.drawer-nav {
+  padding: 0 20px; display: grid; align-content: start;
+  flex: 1 1 auto; min-height: 0; overflow-y: auto;
 }
-.drawer-nav summary::after {
-  content: ''; width: 7px; height: 7px; border-radius: 50%;
-  background: var(--accent); transition: transform var(--fast) var(--ease);
+.drawer-nav > a {
+  padding: 12px 0; font-weight: 500; font-size: 17px; line-height: 1.2;
+  border-bottom: 1px solid var(--line);
+  transition: color var(--fast) var(--ease);
 }
-.drawer-nav details[open] summary::after { transform: scale(1.5); }
-.drawer-subnav { display: grid; padding: 4px 0 10px 16px; }
-.drawer-subnav a { padding: 9px 0; font-size: 15px; color: var(--ink-2); }
-.drawer-subnav a:hover { color: var(--ink); }
+.drawer-nav > a:first-child { border-top: 1px solid var(--line); }
+.drawer-nav > a:active { color: var(--accent); }
 .drawer-bottom {
-  margin-top: auto; padding: 18px 20px 26px;
+  flex: none; padding: 16px 20px calc(18px + env(safe-area-inset-bottom, 0px));
   border-top: 1px solid var(--line);
-  display: grid; gap: 16px; justify-items: start;
+  display: grid; gap: 12px; justify-items: stretch;
 }
+.drawer-bottom .phone-link { text-align: center; font-size: 17px; }
 
 /* ===== Первый экран главной ===== */
 .hero { border-bottom: 1px solid var(--line); }
@@ -828,12 +835,13 @@ tbody tr:last-child td { border-bottom: 1px solid var(--line); }
   .header-actions .button { display: none; }
   .brand-logo { height: 40px; }
 
+  /* Станция с выносками – приём для широкого экрана: на телефоне линии
+     теряются, подписи ложатся в нечитаемый столбик и съедают первый экран.
+     Остаются заголовок, строка предложения и кнопка. */
   .hero-inner { grid-template-columns: 1fr; }
-  .hero-object { justify-content: flex-start; flex-direction: column; align-items: flex-start; }
-  .hero-object img { height: 300px; }
-  .callouts { position: static; display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 14px 0 0; }
-  .co { position: static; }
-  .co::after { display: none; }
+  .hero-object { display: none; }
+  .hero-copy { padding: 30px 0 34px; }
+  .hero-copy h1 { max-width: 16ch; }
 
   .page-hero--media .page-hero-inner, .page-hero--note .page-hero-inner { grid-template-columns: 1fr; }
   .page-hero h1 { max-width: none; }
