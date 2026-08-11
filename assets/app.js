@@ -142,13 +142,19 @@
     if (modalContext) modalContext.value = context;
     if (modalHeading) modalHeading.textContent = heading;
     modal.hidden = false;
+    // Класс появляется следующим кадром, иначе переход не проигрывается
+    // и окно возникает рывком.
+    requestAnimationFrame(() => modal.classList.add("is-open"));
     body.classList.add("modal-open");
     modalClose?.focus();
   };
 
   const closeModal = () => {
     if (!modal || modal.hidden) return;
-    modal.hidden = true;
+    modal.classList.remove("is-open");
+    window.setTimeout(() => {
+      modal.hidden = true;
+    }, 280);
     body.classList.remove("modal-open");
     lastFocused?.focus();
   };
