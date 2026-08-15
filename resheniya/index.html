@@ -217,9 +217,10 @@
   </div>
 </section>
 <section class="section section--wash">
-  <div class="page">
-    <div class="section-heading"><h2>С чего начать разбор</h2></div>
-    <div class="faq"><details>
+  <div class="page faq-band">
+    <div class="faq-copy">
+      <div class="section-heading"><h2>С чего начать разбор</h2></div>
+      <div class="faq"><details>
   <summary>С чего начать, если непонятно, что не так с водой?</summary>
   <p>Начните с того, что знаете точно – откуда идёт вода. Страница источника подскажет, какие показатели обычно проверяют и что собрать в исходных данных. Если беспокоит конкретный бытовой признак – рыжие потёки, налёт, запах – заходите со стороны проблемы. Оба входа приводят к одному шагу: анализу и расчёту расхода.</p>
 </details>
@@ -239,50 +240,44 @@
   <summary>Я уже знаю, какое оборудование мне нужно – зачем этот раздел?</summary>
   <p>Тогда быстрее идти сразу в каталог, там всё разложено по классам оборудования. Раздел решений нужен на шаг раньше – когда есть жалоба на воду, но ещё нет ответа, каким методом её закрывать.</p>
 </details><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"С чего начать, если непонятно, что не так с водой?","acceptedAnswer":{"@type":"Answer","text":"Начните с того, что знаете точно – откуда идёт вода. Страница источника подскажет, какие показатели обычно проверяют и что собрать в исходных данных. Если беспокоит конкретный бытовой признак – рыжие потёки, налёт, запах – заходите со стороны проблемы. Оба входа приводят к одному шагу: анализу и расчёту расхода."}},{"@type":"Question","name":"Чем страница источника отличается от страницы проблемы?","acceptedAnswer":{"@type":"Answer","text":"Страница источника отвечает на вопрос, откуда вода и что в такой воде вообще встречается. Страница проблемы разбирает один признак: почему он появляется, какие показатели за ним стоят и какими методами это закрывают. Обычно человек заходит с проблемы, а перед подбором всё равно возвращается к источнику."}},{"@type":"Question","name":"У меня сразу и налёт, и запах, и рыжие разводы – что читать?","acceptedAnswer":{"@type":"Answer","text":"Читайте всё, что подходит под описание, но не собирайте решение из трёх отдельных фильтров. Несколько признаков одновременно – это чаще одна общая схема из нескольких ступеней. Порядок ступеней там важнее, чем сам набор."}},{"@type":"Question","name":"Здесь можно определить проблему по описанию воды?","acceptedAnswer":{"@type":"Answer","text":"Раздел помогает сузить круг и понять, что проверять в лаборатории. Диагноз по цвету, запаху или фотографии не ставим: один и тот же признак бывает у разных причин, а часть загрязнений не видна и не пахнет вообще."}},{"@type":"Question","name":"Я уже знаю, какое оборудование мне нужно – зачем этот раздел?","acceptedAnswer":{"@type":"Answer","text":"Тогда быстрее идти сразу в каталог, там всё разложено по классам оборудования. Раздел решений нужен на шаг раньше – когда есть жалоба на воду, но ещё нет ответа, каким методом её закрывать."}}]}</script></div>
-  </div>
-</section>
-<section class="section section--tight"><div class="page"><div class="lead-band">
-  <div class="lead-copy">
-    <h2>Не нашли точное описание своей воды?</h2>
-    <p>Опишите сразу несколько симптомов или приложите анализ. Специалист должен отделить наблюдение от лабораторного факта.</p>
-    <div class="notice notice--warning">
-      <strong>Почему сразу не называем сумму</strong>
-      <span>Точный расчёт нельзя обещать только по номеру телефона: нужны анализ, расход воды и условия монтажа.</span>
     </div>
-  </div>
-  <form class="lead-form" data-lead-form novalidate>
+    <aside class="lead-aside">
+  <h3>Не нашли точное описание своей воды?</h3>
+  <p>Опишите сразу несколько симптомов или приложите анализ. Специалист отделит наблюдение от лабораторного факта.</p>
+  <form class="lead-form lead-form--compact" data-lead-form novalidate>
     <input type="hidden" name="context" value="Хаб решений">
     <input type="hidden" name="started" data-form-started value="">
     <div class="field">
-      <label for="lead-name">Ваше имя</label>
-      <input id="lead-name" type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" required data-error="Напишите, как к вам обращаться." aria-describedby="lead-name-error">
-      <p class="field-error" id="lead-name-error" hidden></p>
+      <label for="aside-name">Ваше имя</label>
+      <input id="aside-name" type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" required data-error="Напишите, как к вам обращаться." aria-describedby="aside-name-error">
+      <p class="field-error" id="aside-name-error" hidden></p>
     </div>
     <div class="field">
-      <label for="lead-problem">Что не так с водой <span class="field-optional">необязательно</span></label>
-      <input id="lead-problem" type="text" name="problem" placeholder="Например: рыжие потёки и запах">
+      <label for="aside-problem">Что не так с водой <span class="field-optional">необязательно</span></label>
+      <input id="aside-problem" type="text" name="problem" placeholder="Например: рыжие потёки и запах">
     </div>
     <div class="field">
-      <label for="lead-phone">Телефон</label>
-      <input id="lead-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" required aria-describedby="lead-phone-error">
-      <p class="field-error" id="lead-phone-error" hidden></p>
+      <label for="aside-phone">Телефон</label>
+      <input id="aside-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" required aria-describedby="aside-phone-error">
+      <p class="field-error" id="aside-phone-error" hidden></p>
     </div>
     <div class="honey" aria-hidden="true">
-      <label for="lead-company">Не заполняйте это поле</label>
-      <input id="lead-company" type="text" name="company" tabindex="-1" autocomplete="off">
+      <label for="aside-company">Не заполняйте это поле</label>
+      <input id="aside-company" type="text" name="company" tabindex="-1" autocomplete="off">
     </div>
     <div class="field field--check">
       <label class="checkbox">
-        <input type="checkbox" name="consent" required aria-describedby="lead-consent-error">
+        <input type="checkbox" name="consent" required aria-describedby="aside-consent-error">
         <span>Согласен на обработку данных. <a href="../soglasie-na-obrabotku-dannyh/index.html">Текст согласия</a>.</span>
       </label>
-      <p class="field-error" id="lead-consent-error" hidden></p>
+      <p class="field-error" id="aside-consent-error" hidden></p>
     </div>
     <button class="button button--wide" type="submit">Описать ситуацию</button>
     <p class="form-status" role="status" tabindex="-1"></p>
-    <p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
   </form>
-</div></div></section>
+</aside>
+  </div>
+</section>
   </main>
   <footer class="site-footer">
   <div class="page">

@@ -135,6 +135,22 @@ a:hover .act::before, .act:hover::before,
 .button--light:hover { background: var(--bg-tint); }
 .section--wash .button--light { background: var(--bg); }
 .section--wash .button--light:hover { background: var(--bg-tint); }
+/* Кнопка внутри плиты не может повторять её цвет: на белой карточке белая
+   кнопка видна только по тексту, а одинаковый ховер сливает их совсем.
+   Поэтому внутри карточек кнопка светло-голубая, а по наведению уходит
+   в акцент – так она отличается от плиты и в покое, и под курсором. */
+.card--plain .button--light, .price-card .button--light,
+.scheme .button--light, .sidebar .button--light, .lead-aside .button--light,
+.section--wash .card--plain .button--light, .section--wash .price-card .button--light,
+.section--wash .scheme .button--light, .section--wash .sidebar .button--light {
+  background: var(--bg-tint); color: var(--ink);
+}
+.card--plain .button--light:hover, .price-card .button--light:hover,
+.scheme .button--light:hover, .sidebar .button--light:hover, .lead-aside .button--light:hover,
+.section--wash .card--plain .button--light:hover, .section--wash .price-card .button--light:hover,
+.section--wash .scheme .button--light:hover, .section--wash .sidebar .button--light:hover {
+  background: var(--accent); color: var(--bg);
+}
 /* Кнопка на тёмном массиве: полупрозрачная плашка, при наведении
    становится светлой заливкой с тёмным текстом. */
 .button--ghost { background: var(--on-dark-plate); color: var(--on-dark); }
@@ -179,11 +195,12 @@ a:hover .act::before, .act:hover::before,
   opacity: 0; visibility: hidden; pointer-events: none;
   transition: opacity var(--mid) var(--ease), transform var(--mid) var(--ease), visibility 0s linear var(--mid);
 }
-/* Панель раскрывается наведением на пункт; класс is-open остаётся для
-   сенсорных экранов, где наведения нет. */
+/* Панель раскрывается наведением на пункт; класс is-open вешает скрипт –
+   для сенсорных экранов и для перехода по клавиатуре. Раскрытие по
+   :focus-within убрано намеренно: любой программный перевод фокуса в шапку
+   (например, после кнопки «наверх») открывал панель сам собой. */
 .nav-panel.is-open,
-.nav-item:hover .nav-panel,
-.nav-item:focus-within .nav-panel {
+.nav-item:hover .nav-panel {
   opacity: 1; visibility: visible; pointer-events: auto;
   transform: translateX(-50%) translateY(0);
   transition: opacity var(--mid) var(--ease), transform var(--mid) var(--ease);
@@ -309,6 +326,9 @@ a:hover .act::before, .act:hover::before,
 
 /* ===== Первый экран внутренних страниц ===== */
 .page-hero { padding-top: clamp(14px, 2vw, 24px); }
+/* Заливка, начинающаяся сразу под заголовком, липнет к нему: цветная полоса
+   отодвигается вниз. Белой секции этого не нужно – у неё свой воздух. */
+.page-hero + .section--wash { margin-top: clamp(28px, 3.4vw, 56px); }
 .page-hero-inner { display: grid; gap: var(--gap-wide); }
 .page-hero--media .page-hero-inner,
 .page-hero--note .page-hero-inner { grid-template-columns: 1.1fr 0.9fr; align-items: center; }
@@ -379,6 +399,11 @@ a:hover .act::before, .act:hover::before,
 .card > h2, .card > h3 { font-size: var(--t-h3); font-weight: 500; }
 .card > h2 { font-size: clamp(1.2rem, 1.7vw, 1.5rem); font-weight: 700; letter-spacing: -0.015em; }
 .card-heading--lg { font-size: clamp(1.35rem, 2.2vw, 1.9rem); }
+/* Заголовок карточки, который по структуре страницы обязан быть вторым
+   уровнем, а выглядеть должен как обычный заголовок карточки. */
+.card > h2.card-heading--sm {
+  font-size: var(--t-h3); font-weight: 500; letter-spacing: -0.005em; line-height: 1.3;
+}
 .card > p { color: var(--ink-2); font-size: var(--t-small); flex: 1; }
 .card h3 a, .card h2 a { transition: color var(--fast) var(--ease); }
 .card:hover h3 a, .card:hover h2 a { color: var(--accent); }
@@ -391,9 +416,15 @@ a:hover .act::before, .act:hover::before,
   padding: clamp(22px, 2vw, 30px);
   transition: background var(--fast) var(--ease), transform var(--fast) var(--ease);
 }
-.card--plain:hover { background: var(--bg-tint); transform: translateY(-2px); }
 .section--wash .card--plain { background: var(--bg); }
-.section--wash .card--plain:hover { background: var(--bg-tint); }
+/* Подсветка при наведении – только у карточек, которые целиком ведут
+   по ссылке. Плита со списком внутри от неё выглядела бы кликабельной. */
+.card--plain:has(a[href]):hover { background: var(--bg-tint); transform: translateY(-2px); }
+.section--wash .card--plain:has(a[href]):hover { background: var(--bg-tint); }
+/* Плита с кнопкой внутри: подсвечивается сама кнопка, а не карточка. */
+.card--plain:has(.button):hover, .section--wash .card--plain:has(.button):hover {
+  background: inherit; transform: none;
+}
 
 .tag { display: none; }
 .empty-slot { background: var(--bg-soft); border-radius: var(--r-card); min-height: 120px; }
@@ -529,6 +560,7 @@ a:hover .act::before, .act:hover::before,
 .faq details > ul { padding: 0 0 14px 21px; max-width: 68ch; }
 /* Раскрытие внутри готовой плиты: фон берёт следующий слой, чтобы
    вложенный блок не сливался с панелью, на которой лежит. */
+.faq--after-table { margin-top: 14px; }
 .faq--inset { margin-top: 18px; }
 .faq--inset details { background: var(--bg); }
 .faq--inset details:hover { background: var(--bg-tint); }
@@ -587,7 +619,6 @@ a:hover .act::before, .act:hover::before,
   transition: background var(--fast) var(--ease);
 }
 .section--wash .price-card { background: var(--bg); }
-.price-card:hover { background: var(--bg-tint); }
 .price-card p { color: var(--ink-2); font-size: var(--t-small); flex: 1; }
 .price-card .button { margin-top: 4px; }
 .price-placeholder { font-size: var(--t-small); font-weight: 500; color: var(--ink-3); }

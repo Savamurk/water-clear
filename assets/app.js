@@ -43,7 +43,10 @@
     window.scrollTo({ top: 0, behavior: smooth ? "smooth" : "instant" });
     // Возврат наверх меняет положение на странице, поэтому фокус уходит
     // к началу содержимого, а не остаётся на исчезнувшей кнопке.
-    document.querySelector(".site-header a, .site-header button")?.focus();
+    // Цель – логотип, а не первая ссылка шапки: первой там идёт пункт меню
+    // с выпадающей панелью, и фокус на нём раскрывал бы её прямо под курсором.
+    const start = document.querySelector(".site-header .brand") || header;
+    start?.focus({ preventScroll: true });
   });
 
   const trapFocus = (event, container) => {
@@ -104,6 +107,27 @@
     item?.addEventListener("pointerleave", () => {
       if (!hoverCapable.matches) return;
       trigger.setAttribute("aria-expanded", "false");
+    });
+
+    // Переход по клавиатуре раскрывает панель, а программный перевод фокуса –
+    // нет: :focus-visible отличает Tab от вызова focus() мышью или скриптом.
+    item?.addEventListener("focusin", () => {
+      let keyboard = true;
+      try {
+        keyboard = trigger.matches(":focus-visible") || item.querySelector(":focus-visible") !== null;
+      } catch (error) {
+        keyboard = true;
+      }
+      if (!keyboard) return;
+      closeNavPanels(trigger);
+      trigger.setAttribute("aria-expanded", "true");
+      panel?.classList.add("is-open");
+    });
+
+    item?.addEventListener("focusout", (event) => {
+      if (item.contains(event.relatedTarget)) return;
+      trigger.setAttribute("aria-expanded", "false");
+      panel?.classList.remove("is-open");
     });
   });
 
