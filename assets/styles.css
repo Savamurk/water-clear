@@ -815,18 +815,30 @@ tbody tr td:last-child { border-radius: 0 var(--r-chip) var(--r-chip) 0; }
   position: absolute; inset: 0; background: var(--veil);
   opacity: 0; transition: opacity var(--mid) var(--ease);
 }
+/* Окно рассчитано так, чтобы помещаться целиком: форма короткая, поля и
+   промежутки ужаты. Прокрутка остаётся страховкой для совсем низких окон –
+   без неё кнопка отправки оказалась бы за краем экрана. */
 .modal-panel {
-  position: relative; width: min(720px, 100%); max-height: min(86vh, 860px); overflow-y: auto;
+  position: relative; width: min(680px, 100%);
+  max-height: min(94vh, 900px); overflow-y: auto;
   background: var(--bg-soft); border-radius: var(--r-plate);
-  padding: clamp(24px, 2.4vw, 34px);
+  padding: clamp(20px, 2vw, 28px);
   transform: translateY(14px); opacity: 0;
   transition: transform var(--mid) var(--ease), opacity var(--mid) var(--ease);
 }
+@supports (max-height: 100dvh) {
+  .modal-panel { max-height: min(94dvh, 900px); }
+}
+@media (max-width: 900px) {
+  @supports (max-height: 100dvh) {
+    .modal-panel { max-height: 96dvh; }
+  }
+}
 .modal.is-open .modal-backdrop { opacity: 1; }
 .modal.is-open .modal-panel { transform: none; opacity: 1; }
-.modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; margin-bottom: 22px; }
-.modal-head h2 { font-size: clamp(1.35rem, 2vw, 1.8rem); }
-.modal-head p { margin-top: 10px; color: var(--ink-2); font-size: var(--t-small); max-width: 48ch; }
+.modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; margin-bottom: 16px; }
+.modal-head h2 { font-size: clamp(1.3rem, 1.8vw, 1.65rem); }
+.modal-head p { margin-top: 6px; color: var(--ink-2); font-size: var(--t-small); max-width: 48ch; }
 .modal-close {
   position: relative; width: 44px; height: 44px; flex: none;
   background: var(--bg); border-radius: var(--r-ui); font-size: 0;
@@ -839,7 +851,9 @@ tbody tr td:last-child { border-radius: 0 var(--r-chip) var(--r-chip) 0; }
 .modal-close::before { transform: translate(-50%, -50%) rotate(45deg); }
 .modal-close::after { transform: translate(-50%, -50%) rotate(-45deg); }
 .modal-close:hover { background: var(--bg-tint); }
-.modal-form { display: grid; gap: 18px; }
+.modal-form { display: grid; gap: 14px; }
+.modal-form .field input, .modal-form .field select { padding: 12px 14px; }
+.modal-form .grid { gap: 14px; }
 
 /* ===== Подвал ===== */
 .site-footer { margin-top: var(--section-pad); background: var(--dark); color: var(--on-dark-2); }
@@ -969,7 +983,14 @@ tbody tr td:last-child { border-radius: 0 var(--r-chip) var(--r-chip) 0; }
   .filter-bar { flex-direction: column; align-items: stretch; }
 
   .modal { padding: 0; align-items: end; }
-  .modal-panel { width: 100%; max-height: 92vh; border-radius: var(--r-plate) var(--r-plate) 0 0; }
+  .modal-panel { width: 100%; max-height: 96vh; border-radius: var(--r-plate) var(--r-plate) 0 0; }
+  /* На телефоне окно держится в одну ширину, поэтому полей становится
+     больше по высоте: подпись под заголовком уходит, промежутки сжимаются –
+     форма помещается целиком даже на низком экране. */
+  .modal-head { margin-bottom: 12px; }
+  .modal-head p { display: none; }
+  .modal-form { gap: 12px; }
+  .modal-form .grid { gap: 12px; }
 
   /* Подвал в одну колонку занимал на телефоне полтора экрана. Колонки
      ссылок встают парами, бренд и контакты держат всю ширину. */
@@ -989,6 +1010,11 @@ tbody tr td:last-child { border-radius: 0 var(--r-chip) var(--r-chip) 0; }
    «Многофункциональный» – не влезает в строку и рубится посередине,
    поэтому кегль заголовков здесь уменьшается. */
 @media (max-width: 400px) {
+  /* Нижняя граница адаптива: на 340px подписи полей переносятся в две
+     строки, поэтому окно заявки ужимается ещё немного. */
+  .modal-panel { padding: 18px 16px calc(16px + env(safe-area-inset-bottom, 0px)); }
+  .modal-form, .modal-form .grid { gap: 10px; }
+  .modal-form .field { gap: 5px; }
   h1 { font-size: 1.6rem; }
   .hero-copy h1 { font-size: 1.75rem; }
   h2 { font-size: 1.4rem; }

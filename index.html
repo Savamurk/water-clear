@@ -442,7 +442,7 @@
     <div class="modal-head">
       <div>
         <h2 id="modal-title" data-modal-heading>Подобрать систему</h2>
-        <p>Сначала зафиксируем источник и симптомы. Для точного решения понадобятся анализ и параметры дома.</p>
+        <p>Ответим, что проверить и сколько это будет стоить.</p>
       </div>
       <button class="modal-close" type="button" aria-label="Закрыть форму">×</button>
     </div>
@@ -463,12 +463,11 @@
       </div>
       <div class="field">
         <label for="modal-problem">Что не так с водой <span class="field-optional">необязательно</span></label>
-        <textarea id="modal-problem" name="problem" placeholder="Например: вода пахнет, остаются рыжие потёки, одновременно работают два душа"></textarea>
+        <input id="modal-problem" type="text" name="problem" placeholder="Например: рыжие потёки и запах">
       </div>
       <div class="field">
-        <label for="modal-file">Протокол анализа</label>
-        <input id="modal-file" type="file" name="analysis-file" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" data-max-size="10" aria-describedby="modal-file-hint modal-file-error">
-        <p class="field-hint" id="modal-file-hint">PDF, JPG, PNG или документ Word, до 10 МБ.</p>
+        <label for="modal-file">Протокол анализа <span class="field-optional">PDF или фото, до 10 МБ</span></label>
+        <input id="modal-file" type="file" name="analysis-file" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" data-max-size="10" aria-describedby="modal-file-error">
         <p class="field-error" id="modal-file-error" hidden></p>
       </div>
       <div class="honey" aria-hidden="true">
@@ -484,7 +483,6 @@
       </div>
       <button class="button button--wide" type="submit">Передать исходные данные</button>
       <p class="form-status" role="status" tabindex="-1"></p>
-      <p class="form-note">Файл анализа можно приложить на следующем шаге – так расчёт получится точнее.</p>
     </form>
   </div>
 </div>
