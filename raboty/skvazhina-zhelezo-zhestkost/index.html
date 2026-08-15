@@ -12,7 +12,7 @@
   <meta property="og:title" content="Кейс: очистка воды из скважины от железа и жёсткости">
   <meta property="og:description" content="Кейс водоподготовки в частном доме: анализ до и после, выбор схемы и отклонённые варианты, полная смета, условия монтажа и результат через шесть месяцев.">
   <meta property="og:url" content="https://filtr-dam.ru/raboty/skvazhina-zhelezo-zhestkost/">
-  <meta name="theme-color" content="#E9EBEE">
+  <meta name="theme-color" content="#FFFFFF">
   <link rel="icon" href="../../assets/img/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../assets/fonts/basis-regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -160,16 +160,16 @@
   <div class="page">
     <div class="section-heading"><h2>Решение по ступеням</h2><p>Схему собрали из трёх ступеней. Аэрационную колонну рассматривали, но отказались: концентрация железа позволяла обойтись каталитической загрузкой, а компрессор добавил бы шум в помещение рядом со спальней.</p></div>
     <div class="grid grid--3">
-      <article class="card"><span class="tag">01</span><h3>Механическая очистка</h3><p>Промывной фильтр 100 мкм на вводе. Защищает клапаны и загрузку от песка, который скважина периодически выносит после долгого простоя.</p></article>
-      <article class="card"><span class="tag">02</span><h3>Обезжелезивание и умягчение</h3><p>Две колонны 1044: каталитическая загрузка по железу и марганцу, следом ионообменная смола по жёсткости. Регенерация ночная, по счётчику расхода, а не по таймеру.</p></article>
-      <article class="card"><span class="tag">03</span><h3>Питьевая ступень</h3><p>Обратный осмос под мойкой на кухне. Отдельная задача с отдельными критериями: вода для питья и готовки, а не для всего дома.</p></article>
+      <article class="card card--plain"><span class="tag">01</span><h3>Механическая очистка</h3><p>Промывной фильтр 100 мкм на вводе. Защищает клапаны и загрузку от песка, который скважина периодически выносит после долгого простоя.</p></article>
+      <article class="card card--plain"><span class="tag">02</span><h3>Обезжелезивание и умягчение</h3><p>Две колонны 1044: каталитическая загрузка по железу и марганцу, следом ионообменная смола по жёсткости. Регенерация ночная, по счётчику расхода, а не по таймеру.</p></article>
+      <article class="card card--plain"><span class="tag">03</span><h3>Питьевая ступень</h3><p>Обратный осмос под мойкой на кухне. Отдельная задача с отдельными критериями: вода для питья и готовки, а не для всего дома.</p></article>
     </div>
   </div>
 </section>
 <section class="section section--wash">
   <div class="page grid grid--2">
-    <article class="card"><h2>Полная смета</h2><ul class="price-lines"><li><span>Оборудование</span><strong>163 000 ₽</strong></li><li><span>Монтаж</span><strong>38 000 ₽</strong></li><li><span>Материалы обвязки</span><strong>11 400 ₽</strong></li><li><span>Доставка</span><strong>3 000 ₽</strong></li><li><span>Итого</span><strong>215 400 ₽</strong></li></ul></article>
-    <article class="card"><h2>Монтаж и эксплуатация</h2><ul class="plain-list"><li>срок работ: один день;</li><li>место: угол котельной 1,3 × 0,8 м;</li><li>дренаж: отдельный колодец, мимо септика;</li><li>соль: около 22 кг в месяц;</li><li>плановый сервис: раз в полгода.</li></ul></article>
+    <article class="card card--plain"><h2>Полная смета</h2><ul class="price-lines"><li><span>Оборудование</span><strong>163 000 ₽</strong></li><li><span>Монтаж</span><strong>38 000 ₽</strong></li><li><span>Материалы обвязки</span><strong>11 400 ₽</strong></li><li><span>Доставка</span><strong>3 000 ₽</strong></li><li><span>Итого</span><strong>215 400 ₽</strong></li></ul></article>
+    <article class="card card--plain"><h2>Монтаж и эксплуатация</h2><ul class="plain-list"><li>срок работ: один день;</li><li>место: угол котельной 1,3 × 0,8 м;</li><li>дренаж: отдельный колодец, мимо септика;</li><li>соль: около 22 кг в месяц;</li><li>плановый сервис: раз в полгода.</li></ul></article>
   </div>
 </section>
 <section class="section">
@@ -206,18 +206,12 @@
     <input type="hidden" name="context" value="Кейс: скважина, железо и жёсткость">
     <input type="hidden" name="started" data-form-started value="">
     <div class="field">
-      <label for="lead-source">Источник воды</label>
-      <select id="lead-source" name="source" required aria-describedby="lead-source-error">
-        <option value="">Выберите источник</option>
-        <option>Скважина</option>
-        <option>Колодец</option>
-        <option>Центральный водопровод</option>
-        <option>Пока не знаю</option>
-      </select>
-      <p class="field-error" id="lead-source-error" hidden></p>
+      <label for="lead-name">Ваше имя</label>
+      <input id="lead-name" type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" required data-error="Напишите, как к вам обращаться." aria-describedby="lead-name-error">
+      <p class="field-error" id="lead-name-error" hidden></p>
     </div>
     <div class="field">
-      <label for="lead-problem">Что не так с водой</label>
+      <label for="lead-problem">Что не так с водой <span class="field-optional">необязательно</span></label>
       <input id="lead-problem" type="text" name="problem" placeholder="Например: рыжие потёки и запах">
     </div>
     <div class="field">
@@ -307,39 +301,19 @@
       <input type="hidden" name="started" data-form-started value="">
       <div class="grid grid--2">
         <div class="field">
-          <label for="modal-source">Источник воды</label>
-          <select id="modal-source" name="source" required aria-describedby="modal-source-error">
-            <option value="">Выберите</option>
-            <option>Скважина</option>
-            <option>Колодец</option>
-            <option>Центральный водопровод</option>
-            <option>Пока не знаю</option>
-          </select>
-          <p class="field-error" id="modal-source-error" hidden></p>
-        </div>
-        <div class="field">
-          <label for="modal-analysis">Анализ воды</label>
-          <select id="modal-analysis" name="analysis">
-            <option>Есть, хочу приложить</option>
-            <option>Нет, нужен анализ</option>
-            <option>Есть, но старше года</option>
-          </select>
-        </div>
-      </div>
-      <div class="field">
-        <label for="modal-problem">Что вы замечаете</label>
-        <textarea id="modal-problem" name="problem" placeholder="Например: вода пахнет, остаются рыжие потёки, одновременно работают два душа"></textarea>
-      </div>
-      <div class="grid grid--2">
-        <div class="field">
-          <label for="modal-name">Имя</label>
-          <input id="modal-name" type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться">
+          <label for="modal-name">Ваше имя</label>
+          <input id="modal-name" type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" required data-error="Напишите, как к вам обращаться." aria-describedby="modal-name-error">
+          <p class="field-error" id="modal-name-error" hidden></p>
         </div>
         <div class="field">
           <label for="modal-phone">Телефон</label>
           <input id="modal-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" required aria-describedby="modal-phone-error">
           <p class="field-error" id="modal-phone-error" hidden></p>
         </div>
+      </div>
+      <div class="field">
+        <label for="modal-problem">Что не так с водой <span class="field-optional">необязательно</span></label>
+        <textarea id="modal-problem" name="problem" placeholder="Например: вода пахнет, остаются рыжие потёки, одновременно работают два душа"></textarea>
       </div>
       <div class="field">
         <label for="modal-file">Протокол анализа</label>

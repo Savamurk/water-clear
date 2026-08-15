@@ -12,7 +12,7 @@
   <meta property="og:title" content="Комплектующие для систем водоочистки">
   <meta property="og:description" content="Комплектующие систем очистки воды: управляющие клапаны, корпуса, баки и элементы обвязки. Требования к совместимости и что подбирается только под вашу схему.">
   <meta property="og:url" content="https://filtr-dam.ru/catalog/komplektuyushchie/">
-  <meta name="theme-color" content="#E9EBEE">
+  <meta name="theme-color" content="#FFFFFF">
   <link rel="icon" href="../../assets/img/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../assets/fonts/basis-regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -125,10 +125,26 @@
 <li>совместимость с корпусом и загрузкой;</li>
 <li>гарантия, наличие и происхождение.</li></ul>
       <p class="facts-note">Узел подходит не тогда, когда совпал диаметр, а когда сходятся версия клапана, рабочее давление и то, что засыпано в баллон.</p>
+      <div class="faq faq--inset">
+  <details>
+    <summary>С чем справляется решение этой категории</summary>
+    <ul class="plain-list"><li>заменить подтверждённо неисправный узел;</li>
+<li>модернизировать совместимую систему;</li>
+<li>собрать обвязку по проекту;</li>
+<li>обеспечить сервис существующего оборудования.</li></ul>
+  </details>
+  <details>
+    <summary>Чего ждать от него не стоит</summary>
+    <ul class="plain-list"><li>по одной фотографии клапан не опознаётся: нужны модель и версия;</li>
+<li>дорогой узел меняется после диагностики, а не вместо неё;</li>
+<li>совместимость определяют параметры, а не внешнее сходство;</li>
+<li>часть позиций снята с производства, и аналог подбирается отдельно.</li></ul>
+  </details>
+</div>
     </div>
   </div>
 </section>
-<section class="section">
+<section class="section section--wash">
   <div class="page">
     <div class="section-heading"><h2>Варианты решений</h2><p>Узлы идут под вашу схему, а не по картинке в каталоге: у одной и той же модели бывают разные версии, и это выясняется до отправки.</p></div>
     <div class="grid grid--3"><article class="price-card">
@@ -171,7 +187,7 @@
   <span class="card-link">Открыть</span>
 </article></div></div>
 </section>
-<section class="section"><div class="page"><div class="section-heading"><h2>Вопросы о категории</h2></div><div class="faq"><details>
+<section class="section section--wash"><div class="page"><div class="section-heading"><h2>Вопросы о категории</h2></div><div class="faq"><details>
   <summary>Клапан льёт в дренаж без остановки. Можно просто купить такой же и поменять?</summary>
   <p>Похожее поведение бывает и от загрязнения, и от сбитой программы, и от износа узла – по одному признаку это не различить. Сначала диагностика, потом замена, иначе есть шанс купить деталь и получить ту же картину. Исправный узел, снятый зря, продавцу обычно уже не вернуть.</p>
 </details>
@@ -197,18 +213,12 @@
     <input type="hidden" name="context" value="Комплектующие">
     <input type="hidden" name="started" data-form-started value="">
     <div class="field">
-      <label for="wide-source-Комплектующие">Источник воды</label>
-      <select id="wide-source-Комплектующие" name="source" required aria-describedby="wide-source-error-Комплектующие">
-        <option value="">Выберите источник</option>
-        <option>Скважина</option>
-        <option>Колодец</option>
-        <option>Центральный водопровод</option>
-        <option>Пока не знаю</option>
-      </select>
-      <p class="field-error" id="wide-source-error-Комплектующие" hidden></p>
+      <label for="wide-name-Комплектующие">Ваше имя</label>
+      <input id="wide-name-Комплектующие" type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" required data-error="Напишите, как к вам обращаться." aria-describedby="wide-name-error-Комплектующие">
+      <p class="field-error" id="wide-name-error-Комплектующие" hidden></p>
     </div>
     <div class="field">
-      <label for="wide-problem-Комплектующие">Что не так с водой</label>
+      <label for="wide-problem-Комплектующие">Что не так с водой <span class="field-optional">необязательно</span></label>
       <input id="wide-problem-Комплектующие" type="text" name="problem" placeholder="Например: рыжие потёки и запах">
     </div>
     <div class="field">
@@ -297,39 +307,19 @@
       <input type="hidden" name="started" data-form-started value="">
       <div class="grid grid--2">
         <div class="field">
-          <label for="modal-source">Источник воды</label>
-          <select id="modal-source" name="source" required aria-describedby="modal-source-error">
-            <option value="">Выберите</option>
-            <option>Скважина</option>
-            <option>Колодец</option>
-            <option>Центральный водопровод</option>
-            <option>Пока не знаю</option>
-          </select>
-          <p class="field-error" id="modal-source-error" hidden></p>
-        </div>
-        <div class="field">
-          <label for="modal-analysis">Анализ воды</label>
-          <select id="modal-analysis" name="analysis">
-            <option>Есть, хочу приложить</option>
-            <option>Нет, нужен анализ</option>
-            <option>Есть, но старше года</option>
-          </select>
-        </div>
-      </div>
-      <div class="field">
-        <label for="modal-problem">Что вы замечаете</label>
-        <textarea id="modal-problem" name="problem" placeholder="Например: вода пахнет, остаются рыжие потёки, одновременно работают два душа"></textarea>
-      </div>
-      <div class="grid grid--2">
-        <div class="field">
-          <label for="modal-name">Имя</label>
-          <input id="modal-name" type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться">
+          <label for="modal-name">Ваше имя</label>
+          <input id="modal-name" type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" required data-error="Напишите, как к вам обращаться." aria-describedby="modal-name-error">
+          <p class="field-error" id="modal-name-error" hidden></p>
         </div>
         <div class="field">
           <label for="modal-phone">Телефон</label>
           <input id="modal-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" required aria-describedby="modal-phone-error">
           <p class="field-error" id="modal-phone-error" hidden></p>
         </div>
+      </div>
+      <div class="field">
+        <label for="modal-problem">Что не так с водой <span class="field-optional">необязательно</span></label>
+        <textarea id="modal-problem" name="problem" placeholder="Например: вода пахнет, остаются рыжие потёки, одновременно работают два душа"></textarea>
       </div>
       <div class="field">
         <label for="modal-file">Протокол анализа</label>

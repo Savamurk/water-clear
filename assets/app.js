@@ -289,7 +289,13 @@
         }
       }
     } else if (field.required && !field.value.trim()) {
-      setFieldError(field, "Выберите значение, иначе расчёт будет наугад.");
+      // Своё сообщение поле задаёт атрибутом data-error: «выберите значение»
+      // на пустом имени звучит как ошибка интерфейса, а не подсказка.
+      const fallback =
+        field.tagName === "SELECT"
+          ? "Выберите значение, иначе расчёт будет наугад."
+          : "Заполните это поле, без него заявку не принять.";
+      setFieldError(field, field.dataset.error || fallback);
       return false;
     }
 

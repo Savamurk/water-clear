@@ -12,7 +12,7 @@
   <meta property="og:title" content="Питьевые фильтры и обратный осмос под мойку">
   <meta property="og:description" content="Питьевые фильтры для дома: проточные системы и обратный осмос, анализ исходной воды, давление, накопительный бак и минерализация. Если кувшин не справляется.">
   <meta property="og:url" content="https://filtr-dam.ru/catalog/pitevye-filtry/">
-  <meta name="theme-color" content="#E9EBEE">
+  <meta name="theme-color" content="#FFFFFF">
   <link rel="icon" href="../../assets/img/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../assets/fonts/basis-regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -125,10 +125,26 @@
 <li>соотношение очищенной воды и концентрата;</li>
 <li>картриджи, мембрана и график замены.</li></ul>
       <p class="facts-note">Кухонную ступень считают по воде, которая доходит до мойки уже после общей подготовки, а это другой протокол, чем на вводе в дом.</p>
+      <div class="faq faq--inset">
+  <details>
+    <summary>С чем справляется решение этой категории</summary>
+    <ul class="plain-list"><li>улучшить воду для питья и приготовления пищи;</li>
+<li>снизить растворённые соли в мембранной схеме;</li>
+<li>убрать часть запаха и привкуса подходящей сорбцией;</li>
+<li>не очищать весь объём дома до уровня кухонной точки.</li></ul>
+  </details>
+  <details>
+    <summary>Чего ждать от него не стоит</summary>
+    <ul class="plain-list"><li>не защищает бойлер и сантехнику во всём доме;</li>
+<li>не работает без своевременной замены элементов;</li>
+<li>обратный осмос требует давления и отвода концентрата;</li>
+<li>пригодность воды подтверждается анализом, а не названием фильтра.</li></ul>
+  </details>
+</div>
     </div>
   </div>
 </section>
-<section class="section">
+<section class="section section--wash">
   <div class="page">
     <div class="section-heading"><h2>Варианты решений</h2><p>Системы отличаются глубиной вмешательства в состав воды и аппетитом к месту под мойкой. Второе выясняется рулеткой раньше, чем первое протоколом.</p></div>
     <div class="grid grid--3"><article class="price-card">
@@ -171,7 +187,7 @@
   <span class="card-link">Открыть</span>
 </article></div></div>
 </section>
-<section class="section"><div class="page"><div class="section-heading"><h2>Вопросы о категории</h2></div><div class="faq"><details>
+<section class="section section--wash"><div class="page"><div class="section-heading"><h2>Вопросы о категории</h2></div><div class="faq"><details>
   <summary>У нас городской водопровод и кувшин на столе. Он справляется?</summary>
   <p>Кувшин работает малым объёмом, его ресурс вырабатывается быстро, а результат целиком зависит от того, меняете ли вы картридж вовремя. На постоянный расход семьи и тем более на защиту техники он не рассчитан – это решение для чайника, а не для дома. Если кувшин перестал устраивать, логичный следующий шаг – стационарная ступень под мойкой.</p>
 </details>
@@ -197,18 +213,12 @@
     <input type="hidden" name="context" value="Питьевые фильтры">
     <input type="hidden" name="started" data-form-started value="">
     <div class="field">
-      <label for="wide-source-Питьевые фильтры">Источник воды</label>
-      <select id="wide-source-Питьевые фильтры" name="source" required aria-describedby="wide-source-error-Питьевые фильтры">
-        <option value="">Выберите источник</option>
-        <option>Скважина</option>
-        <option>Колодец</option>
-        <option>Центральный водопровод</option>
-        <option>Пока не знаю</option>
-      </select>
-      <p class="field-error" id="wide-source-error-Питьевые фильтры" hidden></p>
+      <label for="wide-name-Питьевые фильтры">Ваше имя</label>
+      <input id="wide-name-Питьевые фильтры" type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" required data-error="Напишите, как к вам обращаться." aria-describedby="wide-name-error-Питьевые фильтры">
+      <p class="field-error" id="wide-name-error-Питьевые фильтры" hidden></p>
     </div>
     <div class="field">
-      <label for="wide-problem-Питьевые фильтры">Что не так с водой</label>
+      <label for="wide-problem-Питьевые фильтры">Что не так с водой <span class="field-optional">необязательно</span></label>
       <input id="wide-problem-Питьевые фильтры" type="text" name="problem" placeholder="Например: рыжие потёки и запах">
     </div>
     <div class="field">
@@ -297,39 +307,19 @@
       <input type="hidden" name="started" data-form-started value="">
       <div class="grid grid--2">
         <div class="field">
-          <label for="modal-source">Источник воды</label>
-          <select id="modal-source" name="source" required aria-describedby="modal-source-error">
-            <option value="">Выберите</option>
-            <option>Скважина</option>
-            <option>Колодец</option>
-            <option>Центральный водопровод</option>
-            <option>Пока не знаю</option>
-          </select>
-          <p class="field-error" id="modal-source-error" hidden></p>
-        </div>
-        <div class="field">
-          <label for="modal-analysis">Анализ воды</label>
-          <select id="modal-analysis" name="analysis">
-            <option>Есть, хочу приложить</option>
-            <option>Нет, нужен анализ</option>
-            <option>Есть, но старше года</option>
-          </select>
-        </div>
-      </div>
-      <div class="field">
-        <label for="modal-problem">Что вы замечаете</label>
-        <textarea id="modal-problem" name="problem" placeholder="Например: вода пахнет, остаются рыжие потёки, одновременно работают два душа"></textarea>
-      </div>
-      <div class="grid grid--2">
-        <div class="field">
-          <label for="modal-name">Имя</label>
-          <input id="modal-name" type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться">
+          <label for="modal-name">Ваше имя</label>
+          <input id="modal-name" type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" required data-error="Напишите, как к вам обращаться." aria-describedby="modal-name-error">
+          <p class="field-error" id="modal-name-error" hidden></p>
         </div>
         <div class="field">
           <label for="modal-phone">Телефон</label>
           <input id="modal-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" required aria-describedby="modal-phone-error">
           <p class="field-error" id="modal-phone-error" hidden></p>
         </div>
+      </div>
+      <div class="field">
+        <label for="modal-problem">Что не так с водой <span class="field-optional">необязательно</span></label>
+        <textarea id="modal-problem" name="problem" placeholder="Например: вода пахнет, остаются рыжие потёки, одновременно работают два душа"></textarea>
       </div>
       <div class="field">
         <label for="modal-file">Протокол анализа</label>

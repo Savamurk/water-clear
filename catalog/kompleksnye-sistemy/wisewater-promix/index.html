@@ -12,7 +12,7 @@
   <meta property="og:title" content="WiseWater ProMix – подбор по анализу воды и монтаж">
   <meta property="og:description" content="WiseWater ProMix: железо, жёсткость и марганец – исполнение, загрузка и пределы применимости. Проверим по анализу воды и соберём смету с монтажом. Москва и область.">
   <meta property="og:url" content="https://filtr-dam.ru/catalog/kompleksnye-sistemy/wisewater-promix/">
-  <meta name="theme-color" content="#E9EBEE">
+  <meta name="theme-color" content="#FFFFFF">
   <link rel="icon" href="../../../assets/img/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="../../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../../assets/fonts/basis-regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -153,19 +153,22 @@
     <div class="product-grid">
 <article class="product-tile" data-brand="SpaceAqua" data-cat="/catalog/kompleksnye-sistemy/" data-price="111111">
   <div class="product-media"><img src="../../../assets/img/products/spaceaqua-6.webp" alt="" width="215" height="329" loading="lazy" decoding="async"></div>
-  <h3><a href="../../../catalog/kompleksnye-sistemy/spaceaqua-promix/index.html">Многофункциональная система SpaceAqua с загрузкой ProMix, платформа SCA19</a></h3>
+  <h3><a href="../../../catalog/kompleksnye-sistemy/spaceaqua-promix/index.html" title="Многофункциональная система SpaceAqua с загрузкой ProMix, платформа SCA19">SpaceAqua ProMix</a></h3>
+  <p class="product-purpose">Железо, жёсткость и марганец</p>
   <p class="product-price"><span class="num">111 111 ₽</span> · ориентир до анализа</p>
   <span class="card-link">Открыть</span>
 </article>
 <article class="product-tile" data-brand="SybAqua" data-cat="/catalog/kompleksnye-sistemy/" data-price="111111">
   <div class="product-media"><img src="../../../assets/img/products/siberianaqua-5.webp" alt="" width="322" height="329" loading="lazy" decoding="async"></div>
-  <h3><a href="../../../catalog/kompleksnye-sistemy/sybaqua-promix/index.html">Многофункциональная система SybAqua с загрузкой ProMix</a></h3>
+  <h3><a href="../../../catalog/kompleksnye-sistemy/sybaqua-promix/index.html" title="Многофункциональная система SybAqua с загрузкой ProMix">SybAqua ProMix</a></h3>
+  <p class="product-purpose">Железо, жёсткость и марганец</p>
   <p class="product-price"><span class="num">111 111 ₽</span> · ориентир до анализа</p>
   <span class="card-link">Открыть</span>
 </article>
 <article class="product-tile" data-brand="SybAqua" data-cat="/catalog/kompleksnye-sistemy/" data-price="111111">
   <div class="product-media"><img src="../../../assets/img/products/siberianaqua-10.webp" alt="" width="768" height="768" loading="lazy" decoding="async"></div>
-  <h3><a href="../../../catalog/kompleksnye-sistemy/sybaqua-nkx/index.html">Комплексная система SybAqua NKX</a></h3>
+  <h3><a href="../../../catalog/kompleksnye-sistemy/sybaqua-nkx/index.html" title="Комплексная система SybAqua NKX">SybAqua NKX</a></h3>
+  <p class="product-purpose">Несколько показателей протокола</p>
   <p class="product-price"><span class="num">111 111 ₽</span> · ориентир до анализа</p>
   <span class="card-link">Открыть</span>
 </article>
@@ -248,39 +251,19 @@
       <input type="hidden" name="started" data-form-started value="">
       <div class="grid grid--2">
         <div class="field">
-          <label for="modal-source">Источник воды</label>
-          <select id="modal-source" name="source" required aria-describedby="modal-source-error">
-            <option value="">Выберите</option>
-            <option>Скважина</option>
-            <option>Колодец</option>
-            <option>Центральный водопровод</option>
-            <option>Пока не знаю</option>
-          </select>
-          <p class="field-error" id="modal-source-error" hidden></p>
-        </div>
-        <div class="field">
-          <label for="modal-analysis">Анализ воды</label>
-          <select id="modal-analysis" name="analysis">
-            <option>Есть, хочу приложить</option>
-            <option>Нет, нужен анализ</option>
-            <option>Есть, но старше года</option>
-          </select>
-        </div>
-      </div>
-      <div class="field">
-        <label for="modal-problem">Что вы замечаете</label>
-        <textarea id="modal-problem" name="problem" placeholder="Например: вода пахнет, остаются рыжие потёки, одновременно работают два душа"></textarea>
-      </div>
-      <div class="grid grid--2">
-        <div class="field">
-          <label for="modal-name">Имя</label>
-          <input id="modal-name" type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться">
+          <label for="modal-name">Ваше имя</label>
+          <input id="modal-name" type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" required data-error="Напишите, как к вам обращаться." aria-describedby="modal-name-error">
+          <p class="field-error" id="modal-name-error" hidden></p>
         </div>
         <div class="field">
           <label for="modal-phone">Телефон</label>
           <input id="modal-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" required aria-describedby="modal-phone-error">
           <p class="field-error" id="modal-phone-error" hidden></p>
         </div>
+      </div>
+      <div class="field">
+        <label for="modal-problem">Что не так с водой <span class="field-optional">необязательно</span></label>
+        <textarea id="modal-problem" name="problem" placeholder="Например: вода пахнет, остаются рыжие потёки, одновременно работают два душа"></textarea>
       </div>
       <div class="field">
         <label for="modal-file">Протокол анализа</label>

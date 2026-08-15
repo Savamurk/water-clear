@@ -12,7 +12,7 @@
   <meta property="og:title" content="SpaceAqua Iron IronX – подбор по анализу воды и монтаж">
   <meta property="og:description" content="SpaceAqua Iron IronX: обезжелезивание и осветление. Сверим с протоколом вашего анализа и соберём смету с монтажом и обвязкой. Москва и область.">
   <meta property="og:url" content="https://filtr-dam.ru/catalog/obezzhelezivanie/spaceaqua-iron-ironx/">
-  <meta name="theme-color" content="#E9EBEE">
+  <meta name="theme-color" content="#FFFFFF">
   <link rel="icon" href="../../../assets/img/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="../../../assets/img/apple-touch-icon.png">
   <link rel="preload" href="../../../assets/fonts/basis-regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -153,19 +153,22 @@
     <div class="product-grid">
 <article class="product-tile" data-brand="WiseWater" data-cat="/catalog/obezzhelezivanie/" data-price="111111">
   <div class="product-media"><img src="../../../assets/img/products/wisewater-2.webp" alt="" width="215" height="329" loading="lazy" decoding="async"></div>
-  <h3><a href="../../../catalog/obezzhelezivanie/wisewater-ironx/index.html">Система обезжелезивания и осветления WiseWater с загрузкой IronX</a></h3>
+  <h3><a href="../../../catalog/obezzhelezivanie/wisewater-ironx/index.html" title="Система обезжелезивания и осветления WiseWater с загрузкой IronX">WiseWater IronX</a></h3>
+  <p class="product-purpose">Обезжелезивание и осветление</p>
   <p class="product-price"><span class="num">111 111 ₽</span> · ориентир до анализа</p>
   <span class="card-link">Открыть</span>
 </article>
 <article class="product-tile" data-brand="WiseWater" data-cat="/catalog/obezzhelezivanie/" data-price="111111">
   <div class="product-media"><img src="../../../assets/img/products/wisewater-3.webp" alt="" width="215" height="329" loading="lazy" decoding="async"></div>
-  <h3><a href="../../../catalog/obezzhelezivanie/wisewater-wiseeco-f/index.html">Система обезжелезивания и осветления WiseWater с загрузкой WiseEco F</a></h3>
+  <h3><a href="../../../catalog/obezzhelezivanie/wisewater-wiseeco-f/index.html" title="Система обезжелезивания и осветления WiseWater с загрузкой WiseEco F">WiseWater WiseEco F</a></h3>
+  <p class="product-purpose">Обезжелезивание и осветление</p>
   <p class="product-price"><span class="num">111 111 ₽</span> · ориентир до анализа</p>
   <span class="card-link">Открыть</span>
 </article>
 <article class="product-tile" data-brand="WiseWater" data-cat="/catalog/obezzhelezivanie/" data-price="111111">
   <div class="product-media"><img src="../../../assets/img/products/wisewater-4.webp" alt="" width="215" height="329" loading="lazy" decoding="async"></div>
-  <h3><a href="../../../catalog/obezzhelezivanie/wisewater-oxy-ironx/index.html">Система обезжелезивания с воздушной подушкой WiseWater с загрузкой IronX</a></h3>
+  <h3><a href="../../../catalog/obezzhelezivanie/wisewater-oxy-ironx/index.html" title="Система обезжелезивания с воздушной подушкой WiseWater с загрузкой IronX">WiseWater OXY IronX</a></h3>
+  <p class="product-purpose">Безреагентное обезжелезивание</p>
   <p class="product-price"><span class="num">111 111 ₽</span> · ориентир до анализа</p>
   <span class="card-link">Открыть</span>
 </article>
@@ -248,39 +251,19 @@
       <input type="hidden" name="started" data-form-started value="">
       <div class="grid grid--2">
         <div class="field">
-          <label for="modal-source">Источник воды</label>
-          <select id="modal-source" name="source" required aria-describedby="modal-source-error">
-            <option value="">Выберите</option>
-            <option>Скважина</option>
-            <option>Колодец</option>
-            <option>Центральный водопровод</option>
-            <option>Пока не знаю</option>
-          </select>
-          <p class="field-error" id="modal-source-error" hidden></p>
-        </div>
-        <div class="field">
-          <label for="modal-analysis">Анализ воды</label>
-          <select id="modal-analysis" name="analysis">
-            <option>Есть, хочу приложить</option>
-            <option>Нет, нужен анализ</option>
-            <option>Есть, но старше года</option>
-          </select>
-        </div>
-      </div>
-      <div class="field">
-        <label for="modal-problem">Что вы замечаете</label>
-        <textarea id="modal-problem" name="problem" placeholder="Например: вода пахнет, остаются рыжие потёки, одновременно работают два душа"></textarea>
-      </div>
-      <div class="grid grid--2">
-        <div class="field">
-          <label for="modal-name">Имя</label>
-          <input id="modal-name" type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться">
+          <label for="modal-name">Ваше имя</label>
+          <input id="modal-name" type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" required data-error="Напишите, как к вам обращаться." aria-describedby="modal-name-error">
+          <p class="field-error" id="modal-name-error" hidden></p>
         </div>
         <div class="field">
           <label for="modal-phone">Телефон</label>
           <input id="modal-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" required aria-describedby="modal-phone-error">
           <p class="field-error" id="modal-phone-error" hidden></p>
         </div>
+      </div>
+      <div class="field">
+        <label for="modal-problem">Что не так с водой <span class="field-optional">необязательно</span></label>
+        <textarea id="modal-problem" name="problem" placeholder="Например: вода пахнет, остаются рыжие потёки, одновременно работают два душа"></textarea>
       </div>
       <div class="field">
         <label for="modal-file">Протокол анализа</label>
