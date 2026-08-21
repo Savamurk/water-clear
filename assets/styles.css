@@ -982,3 +982,36 @@ tbody tr td:last-child { border-radius: 0 var(--r-chip) var(--r-chip) 0; }
   .page { width: calc(100vw - 32px); }
   .product-media { height: 128px; }
 }
+
+/* ===== Уведомление о cookie ===== */
+/* Плашка появляется один раз: согласие живёт в браузере посетителя и
+   оператору не передаётся. Скрипт снимает hidden, класс is-open вешает
+   следующим кадром – иначе переход не проигрывается. */
+.cookie-note {
+  position: fixed; left: 50%; bottom: 18px; z-index: 50;
+  width: min(760px, calc(100vw - 32px));
+  display: flex; align-items: center; gap: clamp(14px, 2vw, 28px);
+  background: var(--bg-soft); border-radius: var(--r-card);
+  padding: clamp(16px, 1.6vw, 22px) clamp(18px, 2vw, 26px);
+  transform: translate(-50%, 14px); opacity: 0;
+  transition: transform var(--mid) var(--ease), opacity var(--mid) var(--ease);
+}
+.cookie-note.is-open { transform: translate(-50%, 0); opacity: 1; }
+/* Пока уведомление видно, страница резервирует под него место снизу:
+   иначе подвал и последние ссылки оказываются под плашкой. */
+body.has-cookie-note { padding-bottom: calc(var(--cookie-height, 96px) + 16px); }
+.cookie-note p { color: var(--ink-2); font-size: var(--t-small); }
+.cookie-note a { color: var(--accent); }
+.cookie-note a:hover { color: var(--accent-press); }
+.cookie-note .button { flex: none; background: var(--bg-tint); }
+.cookie-note .button:hover { background: var(--accent); color: var(--bg); }
+
+@media (max-width: 700px) {
+  .cookie-note {
+    flex-direction: column; align-items: stretch; gap: 12px;
+    bottom: 12px; padding: 16px 18px;
+  }
+  .cookie-note .button { width: 100%; }
+  /* Кнопка «наверх» не должна перекрывать плашку. */
+  .cookie-note:not([hidden]) ~ .to-top { display: none; }
+}

@@ -521,3 +521,48 @@
     );
   }
 })();
+
+// Уведомление о cookie. Показывается один раз: отметка о согласии хранится
+// в браузере посетителя и никуда не отправляется. Если хранилище недоступно
+// (приватный режим с запретом), плашка просто покажется снова.
+(() => {
+  const note = document.querySelector(".cookie-note");
+  if (!note) return;
+  const KEY = "fd-cookie-ok";
+
+  const stored = (() => {
+    try {
+      return window.localStorage.getItem(KEY);
+    } catch (error) {
+      return null;
+    }
+  })();
+  if (stored) return;
+
+  const reserveSpace = () => {
+    document.body.style.setProperty("--cookie-height", note.offsetHeight + "px");
+    document.body.classList.add("has-cookie-note");
+  };
+
+  note.hidden = false;
+  requestAnimationFrame(() => {
+    note.classList.add("is-open");
+    reserveSpace();
+  });
+  window.addEventListener("resize", () => {
+    if (!note.hidden) reserveSpace();
+  });
+
+  note.querySelector(".cookie-note-accept")?.addEventListener("click", () => {
+    note.classList.remove("is-open");
+    document.body.classList.remove("has-cookie-note");
+    window.setTimeout(() => {
+      note.hidden = true;
+    }, 280);
+    try {
+      window.localStorage.setItem(KEY, "1");
+    } catch (error) {
+      /* приватный режим: покажем снова в следующий раз */
+    }
+  });
+})();
